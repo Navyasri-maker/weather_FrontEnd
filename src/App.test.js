@@ -52,7 +52,7 @@ test("searches for a city and can switch temperature units", async () => {
     await screen.findByRole("heading", { name: /bengaluru/i })
   ).toBeInTheDocument();
   expect(global.fetch).toHaveBeenCalledWith(
-    "http://localhost:8080/weather/Bengaluru"
+    "https://weather-backend-production-f3d6.up.railway.app/weather/Bengaluru"
   );
   expect(screen.getByText("24", { exact: true })).toBeInTheDocument();
 

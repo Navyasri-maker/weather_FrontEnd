@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 const API_URL =
-  process.env.REACT_APP_WEATHER_API_URL || "http://localhost:8080/weather";
+  process.env.REACT_APP_WEATHER_API_URL ||
+  "https://weather-backend-production-f3d6.up.railway.app/weather";
 
 const popularCities = [
   { name: "Hyderabad", country: "IN" },
