@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# SkyCast frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Run with the local backend
 
-## Available Scripts
+1. Start the Spring Boot backend from `weather_backend/weather_backend` on
+   port `8080`. Configure its MySQL connection settings and `WEATHER_API_KEY`
+   as described in the backend README.
+2. In this directory, run `npm start`.
 
-In the project directory, you can run:
+The frontend calls `http://localhost:8080/weather` by default. For local
+development, the backend's `WEATHER_CORS_ORIGIN` default permits cross-origin
+requests.
 
-### `npm start`
+## Deploy on Vercel
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Import the `Navyasri-maker/weather_FrontEnd` GitHub repository into Vercel.
+   The included `vercel.json` configures the Create React App build and output.
+2. In the Vercel project's Environment Variables, set
+   `REACT_APP_WEATHER_API_URL` to the Railway backend's public URL followed by
+   `/weather` (for example, `https://your-backend.up.railway.app/weather`).
+3. Deploy or redeploy the Vercel project.
+4. Set the backend's Railway `WEATHER_CORS_ORIGIN` variable to the deployed
+   Vercel origin (for example, `https://your-app.vercel.app`) and redeploy the
+   backend.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The frontend variable is embedded at build time. Redeploy Vercel whenever the
+backend URL changes. Do not add API or database credentials to frontend
+variables or source code.
 
-### `npm test`
+## Available scripts
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `npm start` starts the development server.
+- `npm test -- --watchAll=false` runs the tests once.
+- `npm run build` creates an optimized production build.
